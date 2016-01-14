@@ -1,0 +1,22 @@
+MowItTest
+
+_Lawn and mowers initialization
+/table Lawn dimensions
+ [ Height | Width |
+ | 5      | 5     |
+
+/table Mowers initial positions
+The name is used within the test sequence
+Positions are integers restricted by lawn dimentions
+Orientation must be N, E, S or W
+[ Mower name | Position X | Position Y | Orientation | Instructions |
+| Mower 1    | 1          | 2          | N           | GAGAGAGAA    |
+| Mower 2    | 3          | 3          | E           | AADAADADDA   |
+
+_Run mowers individually
+Use the name of the mower to run. Result is the final position of the mower
+/each
+[ Run        | Final position ? |
+| Mower 1    | 1 3 N            |
+| Mower 2    | 5 1 E            |
+| All mowers | 1 3 N, 5 1 E     |

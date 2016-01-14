@@ -1,0 +1,96 @@
+Lawn factory Tests
+
+The LawnFactory factory can parse a String respecting a given format
+This test checks the parsing method and its error handling
+
+/each
+
+_Norminal cases
+/inline
+* Simple file with no blanks at begining/end of lines
+[ Input string ]"""5 5
+1 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] Lawn of dimention 6x6 with 2 Mowers |
+[ Resulting Mowers ? ] Mower1(1 2 N), Mower2(3 3 E) |
+[ Error ? ] null |
+
+/inline
+* Simple file with blanks at begining and end of lines
+[ Input string ]"""   8 3   
+  2 3 N     
+ GAGAGAGAA 
+   5 3 E    
+    AADAADADDA    """ |
+[ Resulting Lawn ? ] Lawn of dimention 9x4 with 2 Mowers |
+[ Resulting Mowers ? ] Mower1(2 3 N), Mower2(5 3 E) |
+[ Error ? ] null |
+
+_Parsing errors
+/inline
+* Should fail because of a B in fist line
+[ Input string ]"""B 5
+1 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] org.dealus.mowit.exceptions.LawnFactoryParsingException: Input string could not be parsed. |
+
+/inline
+* Should fail because of a non digit caracter on mower'a position in line 2
+[ Input string ]"""4 4
+B 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] org.dealus.mowit.exceptions.LawnFactoryParsingException: Input string could not be parsed. |
+
+/inline
+* Should fail because of an invalid Orientation representation value in line 2
+[ Input string ]"""6 6
+1 2 B
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] org.dealus.mowit.exceptions.LawnFactoryParsingException: Input string could not be parsed. |
+
+/inline
+* Should fail because of an invalide Instruction representation on line 3
+[ Input string ]"""7 7
+1 2 N
+GAGAGABGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] """org.dealus.mowit.exceptions.IncorrectInstructionsException: Given instructions 'GAGAGABGAA' arn't respecting the expected format '[AGD]+'""" |
+
+/inline
+* Should fail because of an incomplete line 1
+[ Input string ]"""2
+1 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] org.dealus.mowit.exceptions.LawnFactoryParsingException: Input string could not be parsed. |
+
+/inline
+* Should fail because the 2nd mower is out of the lawn's boudaries
+[ Input string ]"""2 2
+1 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA""" |
+[ Resulting Lawn ? ] null |
+[ Resulting Mowers ? ] null |
+[ Error ? ] org.dealus.mowit.exceptions.MowerOutOfLawnBoundariesException: Mower position (3x3) is incorect regarding the lawn's dimensions (3x3) |
