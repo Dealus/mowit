@@ -12,3 +12,5 @@ Use option "h" to display all options
 When passing a file to the application:
   File lines can contain leading and ending blank caracters
   Empty lines will be ignored
+  Numbers are supposed to be positive integers
+  
