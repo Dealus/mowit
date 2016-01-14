@@ -19,10 +19,10 @@ import org.dealus.mowit.exceptions.LawnFactoryParsingException
 class MowItNowMain {
 	public static boolean debugMode = false
 
-	private static List fileDescription = ['\t\t[Lawn size X] [Lawn size Y]',
-		'\t\t[Mower1 position X] [Mower1 position Y] [Mower1 orientation (N/S/E/W)]',
+	private static List fileDescription = ['\t\t[Lawn size X (positive integer)] [Lawn size Y (positive integer)]',
+		'\t\t[Mower1 position X (positive integer)] [Mower1 position Y (positive integer)] [Mower1 orientation (N/S/E/W)]',
 		'\t[Mower1 directive(G: left, D: right, A: advance)]',
-		'\t\t[Mower2 position X] [Mower2 position Y] [Mower2 orientation (N/S/E/W)]',
+		'\t\t[Mower2 position X] (positive integer) [Mower2 position Y (positive integer)] [Mower2 orientation (N/S/E/W)]',
 		'\t[Mower2 directive(G: left, D: right, A: advance)]']
 
 	/**
